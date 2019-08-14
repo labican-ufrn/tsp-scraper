@@ -31,7 +31,7 @@ CREATE TABLE unidade_federativa (
 	FOREIGN KEY (pais) REFERENCES pais(codigo) on delete set null on update cascade
 );
 
-CREATE TABLE mesorregiao (
+CREATE TABLE rg_intermediaria (
 	codigo int AUTO_INCREMENT,
 	nome varchar(50),
 	uf int,
@@ -39,12 +39,12 @@ CREATE TABLE mesorregiao (
 	FOREIGN KEY (uf) REFERENCES unidade_federativa(codigo) on delete set null on update cascade
 );
 
-CREATE TABLE microrregiao (
+CREATE TABLE rg_imediata (
 	codigo int AUTO_INCREMENT,
 	nome varchar(50),
-	meso int,
+	intermediaria int,
 	PRIMARY KEY (codigo),
-	FOREIGN KEY (meso) REFERENCES mesorregiao(codigo) on delete set null on update cascade
+	FOREIGN KEY (intermediaria) REFERENCES rg_intermediaria(codigo) on delete set null on update cascade
 );
 
 CREATE TABLE cidade (
@@ -53,10 +53,10 @@ CREATE TABLE cidade (
 	populacao int,
 	latitude decimal,
 	longitude decimal,
-	micro int,
+	imediata int,
 	uf int,
 	PRIMARY KEY (codigo),
-	FOREIGN KEY (micro) REFERENCES microrregiao(codigo) on delete set null on update cascade,
+	FOREIGN KEY (imediata) REFERENCES rg_imediata(codigo) on delete set null on update cascade,
 	FOREIGN KEY (uf) REFERENCES unidade_federativa(codigo) on delete set null on update cascade
 );
 
