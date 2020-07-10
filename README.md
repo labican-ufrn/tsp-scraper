@@ -5,7 +5,7 @@ Ferramenta para coleta de distâncias entre cidades usando a API do Google Maps 
 
 Inicialmente criamos um modelo relacional para a base de dados do TSP para as distância de cidades do Brasil. Definimos as seguintes entidades:
 
-* Pais
+* País
 * Unidade Federativa
 * Região Geográfica Intermediárias (antiga Mesorregião)
 * Regiões Geográficas Imediatas (antiga Microrregião)
